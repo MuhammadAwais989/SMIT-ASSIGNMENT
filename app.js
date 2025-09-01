@@ -1,125 +1,166 @@
-// Chapter 20 – Nested Loops
-let firstNames = ["Lil", "Big"];
+const quizData = [
+  {
+    question: "What is React.js mainly used for?",
+    options: [
+      "Server-side scripting",
+      "Building User Interfaces",
+      "Database management",
+      "Creating Operating Systems",
+    ],
+    correctAnswer: "Building User Interfaces",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question: "React.js is based on which programming language?",
+    options: ["Python", "JavaScript", "Java", "C++"],
+    correctAnswer: "JavaScript",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question: "Which function is used to update the UI in React?",
+    options: ["setState()", "updateUI()", "renderUI()", "changeState()"],
+    correctAnswer: "setState()",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question: "How many types of React components are there?",
+    options: [
+      "1 (Only Class)",
+      "2 (Functional and Class)",
+      "3 (Functional, Class, Hybrid)",
+      "4 (Functional, Class, Pure, Normal)",
+    ],
+    correctAnswer: "2 (Functional and Class)",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question:
+      "Which is used to pass data from one component to another in React?",
+    options: ["state", "props", "methods", "variables"],
+    correctAnswer: "props",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question: "What is the main advantage of Virtual DOM?",
+    options: [
+      "Slows down the app",
+      "Increases memory usage",
+      "Faster UI updates",
+      "Manages the database",
+    ],
+    correctAnswer: "Faster UI updates",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question: "Which company developed React.js?",
+    options: ["Google", "Microsoft", "Facebook (Meta)", "Amazon"],
+    correctAnswer: "Facebook (Meta)",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question: "What does JSX stand for?",
+    options: [
+      "Java Syntax Extension",
+      "JavaScript XML",
+      "JSON Syntax Example",
+      "Java Source Extension",
+    ],
+    correctAnswer: "JavaScript XML",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question: "Which attribute is required when rendering lists in React?",
+    options: ["id", "value", "key", "name"],
+    correctAnswer: "key",
+    time: 60,
+    marks: 2,
+  },
+  {
+    question: "Which React Hook is used to handle side effects?",
+    options: ["useState", "useEffect", "useContext", "useReducer"],
+    correctAnswer: "useEffect",
+    time: 60,
+    marks: 2,
+  },
+];
 
-let lastNames = ["Zzz", "Boom"];
+let questionIndex = 0;
+let timer = quizData[0].time;
 
-for (let i = 0; i < firstNames.length; i++) {
-  for (let j = 0; j < lastNames.length; j++) {
-    if (i !== j) {
-      console.log(firstNames[i] + " " + lastNames[j]);
-    }
+let Questions = document.getElementById("currentquestion");
+let displayOptions = document.getElementById("displayOption");
+let currQuesNo = document.getElementById("currQuesNo");
+let totalQuesNo = document.getElementById("totalQuesNo");
+let displayTime = document.getElementById("displaytime");
+let quizContainer = document.getElementById("quizBox");
+
+let renderQuestion = () => {
+  let currentQuestion = quizData[questionIndex];
+  Questions.innerHTML = currentQuestion.question;
+
+  totalQuesNo.innerHTML = quizData.length;
+  currQuesNo.innerHTML = questionIndex + 1;
+
+  displayOptions.innerHTML = "";
+
+  for (let i = 0; i < currentQuestion.options.length; i++) {
+    let optionss = currentQuestion.options[i];
+
+    displayOptions.innerHTML += ` <button class="option" onclick="checkAnswr('${currentQuestion.correctAnswer}', '${optionss}', '${currentQuestion.marks}',)">${optionss}</button> `;
   }
-}
+};
+renderQuestion();
 
-// Chapter 21 – Changing Case (UPERCASE AND LOWVER CASE)
+let totalMarks = 0;
+let checkAnswr = (a, b, c) => {
+  if (a === b) {
+    totalMarks += Number(c);
+  }
+  console.log(c);
+  Next();
+};
 
-let input = prompt("What is your name:");
-console.log("Lowercase: " + input.toLowerCase());
+let Next = () => {
+  if (questionIndex + 1 === quizData.length) {
+    quizContainer.innerHTML = `
+      <div class="result-box">
+        <h2>🎉 Quiz Completed!</h2>
+        <p>Your Total Marks: <b>${totalMarks}</b> / ${
+      quizData.length * quizData[0].marks
+    }</p>
+        <button onclick="location.reload()">Restart Quiz</button>
+      </div>
+    `;
+  } else {
+    questionIndex++;
+    renderQuestion();
+    timer = quizData[questionIndex].time;
+    displayTime.innerHTML = timer;
+  }
+};
+let Previous = () => {
+  questionIndex--;
+  renderQuestion();
+};
 
-let city = prompt("Enter city name:");
+let checkTimer = () => {
+  const currentQues = quizData[questionIndex];
+  if (timer === 0) {
+    Next();
+    timer = currentQues.time;
+  } else {
+    timer--;
+  }
+  displayTime.innerHTML = timer;
+};
+console.log(timer);
 
-if (city.toUpperCase() === "KARACHI") {
-
-  console.log("You live in Karachi.");
-}
-
-// Chapter 22 – Measuring Strings
-let text = "JavaScriptRocks";
-console.log(text.slice(0, 5));
-
-let fullName = prompt("Enter full name:");
-console.log("Name length is: " + fullName.length);
-
-
-// Chapter 23 – Finding Segments
-let sentence = "The lazy dog sleeps.";
-console.log(sentence.indexOf("dog"));
-
-let message = prompt("Type something:");
-if (message.indexOf("hello") !== -1) {
-  console.log("You said hello!");
-}
-
-// Chapter 24 – Character at Position
-console.log("Character at index 5 is: " + "JavaScript".charAt(5));
-
-
-
-// Chapter 25 – Replacing Characters
-let str5 = "This is a bad example.";
-console.log(str.replace("bad", "good"));
-
-let jsSentence = "JS is short for JS.";
-console.log(jsSentence.replace(/JS/g, "JavaScript"));
-
-
-// Chapter 26 – Rounding Numbers
-
-console.log(Math.round(2.7));
-console.log(Math.floor(2.6));
-console.log(Math.ceil(2.2));
-
-// Chapter 27 – Random Numbers
-
-let coin = Math.random();
-if (coin < 0.5) {
-    console.log("Heads");
-    
-}else{
-    console.log("Tails");
-}
-
-// Chapter 28 – String to Number
-
-let floatNum = "45.67";
-console.log(typeof parseFloat(floatNum));
-
-let str = "123px"
-console.log(parseInt(str));
-
-// Chapter 29 – Number to String
-let number = 123;
-console.log(typeof number.toString());
-
-let StringValue = "2025";
-console.log(Number(StringValue));
-
-// Chapter 30 – Decimal Length
-let x = 123.45678;
-console.log(x.toFixed(2));
-
-let y = "12.424";
-let num = Number(y)
-console.log(num.toFixed(1));
-
-
-// Chapter 31 – Date and Time
-let dateNow = new Date();
-console.log(dateNow);
-
-console.log("Year is: " + dateNow.getFullYear());
-
-let hrs = dateNow.getHours();
-if (hrs < 12) {
-  console.log("Good Morning");
-} else {
-  console.log("Good Evening");
-}
-
-
-// Chapter 32 – Extracting from Date
-
-let dateNow1 = new Date();
-
-console.log("Day: " + dateNow.getDate());
-
-console.log("Month: " + (dateNow.getMonth() + 1));
-
-console.log("Year: " + dateNow.getFullYear());
-
-console.log("Hours: " + dateNow.getHours());
-
-console.log("Minutes: " + dateNow.getMinutes());
-
-let digitalClock = dateNow.getHours() + ":" + dateNow.getMinutes();
-console.log("Time is: " + digitalClock);
+setInterval(checkTimer, 1000);

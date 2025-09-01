@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Quiz App</title>
 </head>
+
 <body>
-    <h1>JAVASCRIPT ASSIGNMENT</h1>
+  <div class="quiz-container" id="quizBox">
+    <h1 class="quiz-title">QUIZ APP</h1>
+
+    <div class="quiz-header">
+      <h2 id="currentquestion"></h2>
+    </div>
+
+    <div class="options" id="displayOption"></div>
+
+    <div class="quiz-footer">
+      <span>Question <span id="currQuesNo"></span> of <span id="totalQuesNo"></span></span>
+      <span class="timer">⏱ <span id="displaytime"></span>s</span>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
 </body>
-<script src="./app.js"></script>
+
 </html>
