@@ -1,166 +1,208 @@
-const quizData = [
-  {
-    question: "What is React.js mainly used for?",
-    options: [
-      "Server-side scripting",
-      "Building User Interfaces",
-      "Database management",
-      "Creating Operating Systems",
-    ],
-    correctAnswer: "Building User Interfaces",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question: "React.js is based on which programming language?",
-    options: ["Python", "JavaScript", "Java", "C++"],
-    correctAnswer: "JavaScript",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question: "Which function is used to update the UI in React?",
-    options: ["setState()", "updateUI()", "renderUI()", "changeState()"],
-    correctAnswer: "setState()",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question: "How many types of React components are there?",
-    options: [
-      "1 (Only Class)",
-      "2 (Functional and Class)",
-      "3 (Functional, Class, Hybrid)",
-      "4 (Functional, Class, Pure, Normal)",
-    ],
-    correctAnswer: "2 (Functional and Class)",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question:
-      "Which is used to pass data from one component to another in React?",
-    options: ["state", "props", "methods", "variables"],
-    correctAnswer: "props",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question: "What is the main advantage of Virtual DOM?",
-    options: [
-      "Slows down the app",
-      "Increases memory usage",
-      "Faster UI updates",
-      "Manages the database",
-    ],
-    correctAnswer: "Faster UI updates",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question: "Which company developed React.js?",
-    options: ["Google", "Microsoft", "Facebook (Meta)", "Amazon"],
-    correctAnswer: "Facebook (Meta)",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question: "What does JSX stand for?",
-    options: [
-      "Java Syntax Extension",
-      "JavaScript XML",
-      "JSON Syntax Example",
-      "Java Source Extension",
-    ],
-    correctAnswer: "JavaScript XML",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question: "Which attribute is required when rendering lists in React?",
-    options: ["id", "value", "key", "name"],
-    correctAnswer: "key",
-    time: 60,
-    marks: 2,
-  },
-  {
-    question: "Which React Hook is used to handle side effects?",
-    options: ["useState", "useEffect", "useContext", "useReducer"],
-    correctAnswer: "useEffect",
-    time: 60,
-    marks: 2,
-  },
-];
+// // Chapter 20 – Nested Loops
+// let firstNames = ["Lil", "Big"];
 
-let questionIndex = 0;
-let timer = quizData[0].time;
+// let lastNames = ["Zzz", "Boom"];
 
-let Questions = document.getElementById("currentquestion");
-let displayOptions = document.getElementById("displayOption");
-let currQuesNo = document.getElementById("currQuesNo");
-let totalQuesNo = document.getElementById("totalQuesNo");
-let displayTime = document.getElementById("displaytime");
-let quizContainer = document.getElementById("quizBox");
+// for (let i = 0; i < firstNames.length; i++) {
+//   for (let j = 0; j < lastNames.length; j++) {
+//     if (i !== j) {
+//       console.log(firstNames[i] + " " + lastNames[j]);
+//     }
+//   }
+// }
 
-let renderQuestion = () => {
-  let currentQuestion = quizData[questionIndex];
-  Questions.innerHTML = currentQuestion.question;
+// // Chapter 21 – Changing Case (UPERCASE AND LOWVER CASE)
 
-  totalQuesNo.innerHTML = quizData.length;
-  currQuesNo.innerHTML = questionIndex + 1;
+// let input = prompt("What is your name:");
+// console.log("Lowercase: " + input.toLowerCase());
 
-  displayOptions.innerHTML = "";
+// let city = prompt("Enter city name:");
 
-  for (let i = 0; i < currentQuestion.options.length; i++) {
-    let optionss = currentQuestion.options[i];
+// if (city.toUpperCase() === "KARACHI") {
 
-    displayOptions.innerHTML += ` <button class="option" onclick="checkAnswr('${currentQuestion.correctAnswer}', '${optionss}', '${currentQuestion.marks}',)">${optionss}</button> `;
-  }
-};
-renderQuestion();
+//   console.log("You live in Karachi.");
+// }
 
-let totalMarks = 0;
-let checkAnswr = (a, b, c) => {
-  if (a === b) {
-    totalMarks += Number(c);
-  }
-  console.log(c);
-  Next();
-};
+// // Chapter 22 – Measuring Strings
+// let text = "JavaScriptRocks";
+// console.log(text.slice(0, 5));
 
-let Next = () => {
-  if (questionIndex + 1 === quizData.length) {
-    quizContainer.innerHTML = `
-      <div class="result-box">
-        <h2>🎉 Quiz Completed!</h2>
-        <p>Your Total Marks: <b>${totalMarks}</b> / ${
-      quizData.length * quizData[0].marks
-    }</p>
-        <button onclick="location.reload()">Restart Quiz</button>
-      </div>
-    `;
+// let fullName = prompt("Enter full name:");
+// console.log("Name length is: " + fullName.length);
+
+// // Chapter 23 – Finding Segments
+// let sentence = "The lazy dog sleeps.";
+// console.log(sentence.indexOf("dog"));
+
+// let message = prompt("Type something:");
+// if (message.indexOf("hello") !== -1) {
+//   console.log("You said hello!");
+// }
+
+// // Chapter 24 – Character at Position
+// console.log("Character at index 5 is: " + "JavaScript".charAt(5));
+
+// // Chapter 25 – Replacing Characters
+// let str5 = "This is a bad example.";
+// console.log(str.replace("bad", "good"));
+
+// let jsSentence = "JS is short for JS.";
+// console.log(jsSentence.replace(/JS/g, "JavaScript"));
+
+// // Chapter 26 – Rounding Numbers
+
+// console.log(Math.round(2.7));
+// console.log(Math.floor(2.6));
+// console.log(Math.ceil(2.2));
+
+// // Chapter 27 – Random Numbers
+
+// let coin = Math.random();
+// if (coin < 0.5) {
+//     console.log("Heads");
+
+// }else{
+//     console.log("Tails");
+// }
+
+// // Chapter 28 – String to Number
+
+// let floatNum = "45.67";
+// console.log(typeof parseFloat(floatNum));
+
+// let str = "123px"
+// console.log(parseInt(str));
+
+// // Chapter 29 – Number to String
+// let number = 123;
+// console.log(typeof number.toString());
+
+// let StringValue = "2025";
+// console.log(Number(StringValue));
+
+// // Chapter 30 – Decimal Length
+// let x = 123.45678;
+// console.log(x.toFixed(2));
+
+// let y = "12.424";
+// let num = Number(y)
+// console.log(num.toFixed(1));
+
+// // Chapter 31 – Date and Time
+// let dateNow = new Date();
+// console.log(dateNow);
+
+// console.log("Year is: " + dateNow.getFullYear());
+
+// let hrs = dateNow.getHours();
+// if (hrs < 12) {
+//   console.log("Good Morning");
+// } else {
+//   console.log("Good Evening");
+// }
+
+// // Chapter 32 – Extracting from Date
+
+// let dateNow1 = new Date();
+
+// console.log("Day: " + dateNow.getDate());
+
+// console.log("Month: " + (dateNow.getMonth() + 1));
+
+// console.log("Year: " + dateNow.getFullYear());
+
+// console.log("Hours: " + dateNow.getHours());
+
+// console.log("Minutes: " + dateNow.getMinutes());
+
+// let digitalClock = dateNow.getHours() + ":" + dateNow.getMinutes();
+// console.log("Time is: " + digitalClock);
+
+// Slider
+
+// let MainImage = document.getElementById('MainImage')
+
+// let ImagesArray = [
+//   "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg",
+//   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFU7U2h0umyF0P6E_yhTX45sGgPEQAbGaJ4g&s",
+//   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZjvXE1BZaaU0IHkXGrQDuGVQjT0jMWW3Xtk5R8FXFB1Gmq7NWibCk4U4WZo8-zB55rKc&usqp=CAU"
+// ]
+
+// let imageIndex = 0
+
+// function RenderImage(){
+//   MainImage.src = ImagesArray[imageIndex]
+// }
+// RenderImage()
+function PreviousImage() {
+  if (imageIndex == 0) {
+    imageIndex = ImagesArray.length - 1;
   } else {
-    questionIndex++;
-    renderQuestion();
-    timer = quizData[questionIndex].time;
-    displayTime.innerHTML = timer;
+    imageIndex = imageIndex - 1;
   }
-};
-let Previous = () => {
-  questionIndex--;
-  renderQuestion();
-};
-
-let checkTimer = () => {
-  const currentQues = quizData[questionIndex];
-  if (timer === 0) {
-    Next();
-    timer = currentQues.time;
+  RenderImage();
+}
+function NextImage() {
+  if (imageIndex + 1 === ImagesArray) {
+    imageIndex = 0;
   } else {
-    timer--;
+    imageIndex = imageIndex + 1;
   }
-  displayTime.innerHTML = timer;
-};
-console.log(timer);
+  RenderImage();
+}
 
-setInterval(checkTimer, 1000);
+// let para = document.getElementsByTagName("p");
+// console.log(para);
+
+// for (let i = 0; i < para.length; i++) {
+//   para[i].style.color = "red";
+// }
+// let box =document.getElementById('box')
+// let para = box.getElementsByTagName("p");
+// console.log(para);
+
+// for (let i = 0; i < para.length; i++) {
+//   para[i].style.color = "red";
+// }
+
+// let abc = ()=> "abc" //abc return
+// console.log(abc());
+
+// let abc = (num)=> num*num 
+// console.log(abc(5));
+
+let getvalue = document.getElementById("inp")
+let box = document.getElementById("box")
+
+let delteTodo = (btn1) =>{
+    btn1.parentNode.remove()
+}
+let DelteAll = () =>{
+  box.innerHTML = ""
+}
+let EditTodo = (btn2) =>{
+    let p = btn2.parentNode   
+    p.firstChild.nodeValue = prompt('Enter Value')
+}
+
+let addTodo = () =>{
+    let uservalue = getvalue.value;
+
+    let p = document.createElement('p') 
+    p.innerHTML = uservalue
+    
+    box.appendChild(p)
+    
+    let EditBtn = document.createElement('button')
+    EditBtn.innerHTML = 'Edit'
+    EditBtn.setAttribute('onClick', 'EditTodo(this)')
+    p.appendChild(EditBtn)
+
+    let delBtn = document.createElement('button')
+    delBtn.innerHTML = 'Delete'
+    p.appendChild(delBtn)
+
+    delBtn.setAttribute('onClick', 'delteTodo(this)')
+
+    getvalue.value = ""
+}
